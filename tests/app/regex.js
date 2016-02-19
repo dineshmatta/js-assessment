@@ -4,6 +4,19 @@ if ( typeof window === 'undefined' ) {
 }
 
 describe('regular expressions', function() {
+
+  var regexAnswers = {
+    containsNumber : function(str) {
+      var matches = str.match(/\d+/g);
+      if (matches != null) {
+        return true;
+      } else {
+        return false;
+      }
+
+    }
+
+  }
   it('you should be able to detect a number in a string', function() {
     expect(regexAnswers.containsNumber('abc123')).to.eql(true);
     expect(regexAnswers.containsNumber('abc')).to.eql(false);

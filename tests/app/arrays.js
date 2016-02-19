@@ -1,13 +1,100 @@
 if ( typeof window === 'undefined' ) {
   require('../../app/arrays');
   var expect = require('chai').expect;
+  var _ = require('underscore');
 }
 
 describe('arrays', function() {
   var a;
+  var arraysAnswers;
 
   beforeEach(function() {
     a = [ 1, 2, 3, 4 ];
+
+    arraysAnswers = {
+      indexOf : function(array, item) {
+        return array.indexOf(item);
+      },
+
+      sum : function(array) {
+        var sum = 0;
+        array.forEach(function(item){
+          sum += item;
+        })
+        return sum;
+      },
+
+      remove : function(array, item){
+        return _.without(array, item);
+      },
+
+      removeWithoutCopy : function(array, itemToBeRemoved){
+        var i, len;
+          for(i=0; i< array.length; i++){
+            if(array[i] === itemToBeRemoved){
+              array.splice(i, 1);
+              i--; //decrement index as element is removed from index
+            }
+          }
+          return array;
+      },
+
+      append: function(array, item){
+         array.push(item);
+         return array;
+      },
+
+      truncate : function(array){
+         array.pop();
+         return array;
+      },
+
+      prepend : function(array, item){
+        array.unshift(item)
+        return array;
+      },
+
+      curtail : function(array){
+        array.splice(0, 1);
+        return array;
+
+      },
+
+      concat : function(array1, array2){
+        return array1.concat(array2);
+
+      },
+
+      insert : function(array, item, index){
+        array.splice(index, 0, item);
+        return array;
+      },
+
+      count : function(array, item){
+        return _.countBy(array)[item];
+      },
+
+      duplicates : function(array){
+        return array.sort().filter( function(v, i, a) { return !i || v !== a[i-1]; } );
+      },
+
+      square : function(array){
+        return array.map(function(item){return item * item});
+      },
+
+      findAllOccurrences : function(array, item){
+        result = [];
+        array.forEach(function(elem, index){
+          if(elem === item){
+            result.push(index);
+          }
+        })
+          return result;
+      }
+
+
+    }
+
   });
 
   it('you should be able to determine the location of an item in an array', function() {

@@ -29,6 +29,12 @@ describe('objects and context', function() {
     };
   });
 
+  var objectsAnswers = {
+    alterContext : function(func, item){
+       return func.call(item);
+    }
+  }
+
   it('you should be able to alter the context in which a method runs', function() {
       // define a function for fn so that the following will pass
     expect(objectsAnswers.alterContext(a.sayIt, b)).to.eql('Yo, Rebecca!');

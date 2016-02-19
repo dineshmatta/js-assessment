@@ -4,6 +4,28 @@ if ( typeof window === 'undefined' ) {
 }
 
 describe('best practices', function(){
+  var bestPracticesAnswers = {
+    globals : function() {
+      return abc = {name: 'Dinesh'};
+    },
+
+    functions : function(val){
+      return 'a';
+    },
+
+    parseInt : function(str){
+      return parseInt(str, 10);
+    },
+
+    identity : function(var1, var2){
+      return var1 === var2;
+    }
+
+
+  }
+
+
+
   it('you should avoid global variables', function() {
     bestPracticesAnswers.globals();
     expect(window.myObject).not.to.be.ok;

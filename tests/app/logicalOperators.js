@@ -3,7 +3,23 @@ if ( typeof window === 'undefined' ) {
   var expect = require('chai').expect;
 }
 
+
+
 describe('logical operators', function(){
+
+  var logicalOperatorsAnswers = {
+
+    or : function(bool1, bool2){
+      return bool1 || bool2;
+    },
+
+    and : function(bool1, bool2){
+      return bool1 && bool2;
+    }
+
+  }
+
+
   it('you should be able to work with logical or', function() {
     expect(logicalOperatorsAnswers.or(false, true)).to.be.ok;
     expect(logicalOperatorsAnswers.or(true, false)).to.be.ok;

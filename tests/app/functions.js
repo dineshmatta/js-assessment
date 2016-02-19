@@ -10,8 +10,37 @@ describe('functions', function() {
         return greeting + ', ' + name + (punctuation || '!');
       };
 
+ var functionsAnswers;
+
   beforeEach(function () {
     sayItCalled = false;
+
+    functionsAnswers = {
+
+      argsAsArray : function(fun, array) {
+        return fun(array[0], array[1], array[2]);
+      },
+
+      speak : function(func, obj){
+        return func.call(obj);
+      },
+
+      functionFunction : function(str){
+          return function(str2){
+             return str + ', ' + str2;
+          }
+      },
+
+      makeClosures : function(array, squareFun){
+        var results = []
+        array.forEach(function(fun, index){
+          results[index] = function() { return squareFun(fun) }
+        })
+        return results;
+      }
+
+    }
+
   });
 
   it('you should be able to use an array as arguments when calling a function', function() {

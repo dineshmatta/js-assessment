@@ -4,6 +4,47 @@ if ( typeof window === 'undefined' ) {
 }
 
 describe('flow control', function() {
+
+  var flowControlAnswers = {
+    fizzBuzz : function(number){
+      if(!number){
+        return false;
+      }
+
+      if(typeof number !== 'number'){
+        return false;
+      }
+
+      if(number === 3 || number === 6){
+        return 'fizz';
+      }
+
+      if(number === 15){
+          return 'fizzbuzz';
+      }
+
+      if(number % 3 === 0 && number % 5 === 0){
+          return 'fizzbuzz';
+      }
+
+      if(number % 3 === 0 ){
+          return 'fizz';
+      }
+
+      if(number % 5 === 0){
+          return 'buzz';
+      }
+
+
+
+      return number;
+
+    }
+
+  }
+
+
+
   it('you should be able to conditionally branch your code', function() {
     var num = 0;
 

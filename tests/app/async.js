@@ -4,6 +4,32 @@ if ( typeof window === 'undefined' ) {
 }
 
 describe('async behavior', function() {
+
+  var asyncAnswers = {
+
+    async : function(val){
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          if (val) {
+            resolve(val);
+          }
+          else {
+            reject(Error("It broke"));
+          }
+        }, 10);
+      });
+    },
+
+    manipulateRemoteData : function(url){
+      return new Promise(function(resolve, reject) {
+        $.ajax(url).then(function(resp) {
+          var people = resp.people.map(function(person) { return person.name} );
+          resolve(people.sort());
+        });
+      });
+    }
+  }
+
   it('you should understand how to use promises to handle asynchronicity', function(done) {
     var flag = false;
     var finished = 0;

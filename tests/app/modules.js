@@ -4,6 +4,24 @@ if ( typeof window === 'undefined' ) {
 }
 
 describe('the module pattern', function() {
+  var modulesAnswers = {
+
+    createModule : function(str1, str2){
+
+      return {
+        sayIt : function () {
+          return this.greeting + ', ' + this.name;
+        },
+        name : str2,
+        greeting : str1
+      };
+
+    }
+
+
+  }
+
+
   it('you should be able to create a function that returns a module', function() {
     var module = modulesAnswers.createModule('hello', 'matt');
 
